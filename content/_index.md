@@ -8,7 +8,7 @@ carousel:
 ---
 
 {{< video-hero
-    video="https://github.com/yefan1765296591-blip/TurboTides/releases/download/v1.0-media/waves.mp4"
+    video="https://github.com/turbotides-web/TurboTides/releases/download/v1.0-media/waves.mp4"
     headline="THE TIDES ARE TURNING WITH"
     sub1="TURBOTIDES"
     sub2="The Turbomachinery Integrated Design System"
