@@ -48,8 +48,8 @@ enableRobotsTXT = true
     meta_description = "TurboTides - Professional CAE industrial software solution to assist enterprises in efficient simulation and optimization design"
     meta_og_title = "TurboTides"
     meta_og_type = "website"
-    meta_og_url = "https://github.com/yefan1765296591-blip/TurboTides.git"
-    meta_og_image = "https://github.com/yefan1765296591-blip/TurboTides/tree/main/img/tn.png"
+    meta_og_url = "https://www.turbotides.com/"
+    meta_og_image = "https://www.turbotides.com/img/tn.png"
     meta_og_description = "TurboTides provides efficient CAE simulation and optimization software to help enterprises improve design efficiency"
 
 [taxonomies]
