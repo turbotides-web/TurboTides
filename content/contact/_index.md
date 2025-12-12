@@ -8,6 +8,6 @@ We provide sales and marketing as well as technical support to TurboTides, FloTi
 
 {{< contact-hero-section >}}
 
-{{< contact-info-section >}}
+<!-- {{< contact-info-section >}} -->
 
 {{< contact-form-section >}}
