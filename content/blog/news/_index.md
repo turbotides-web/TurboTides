@@ -6,5 +6,5 @@ is_news_page = true
 type = "blog"
 layout = "news"
 section = "blog"
-url = "/blog/news/"
+url = "/news/"
 +++

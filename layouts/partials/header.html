@@ -113,18 +113,13 @@
                 </a>
             </li>
             <li>
-                <a href="/testimonials/" class="nav-link duration-200 hover:opacity-70">
-                    TESTIMONIALS
-                </a>
-            </li>
-            <li>
                 <a href="javascript:void(0)" class="nav-link duration-200 hover:opacity-70 mobile-dropdown-toggle"
                    data-target="mobile-blog">
                     BLOGS/CASE STUDIES
                 </a>
                 <div class="mobile-dropdown-content" id="mobile-blog">
-                    <a href="/blog/news/" class="nav-link duration-200 hover:opacity-70">News</a>
-                    <a href="/blog/softwarecases/" class="nav-link duration-200 hover:opacity-70">Software Cases</a>
+                    <a href="/news/" class="nav-link duration-200 hover:opacity-70">News</a>
+                    <a href="/softwarecases/" class="nav-link duration-200 hover:opacity-70">Software Cases</a>
                 </div>
             </li>
             <li>
@@ -148,9 +143,8 @@
     <nav class="main-nav flex items-center justify-between flex-wrap {{ if .IsHome }}nav-home{{ end }}">
         <div class="flex items-center flex-shrink-0 text-xl mr-6 brand-block">
             <a href="{{ .Site.BaseURL }}" class="flex items-center">
-                <img alt="{{ .Site.Params.logo.alt }}" class="{{ .Site.Params.logo.size }} mr-3" src="{{ .Site.Params.logo.main | relURL }}">
-                <span class="font-bold text-2xl tracking-tig">{{ .Site.Title }}</span>
-            </a>
+    <img alt="{{ .Site.Params.logo.alt }}" class="{{ .Site.Params.logo.size }} mr-3" src="{{ .Site.Params.logo.main | relURL }}">
+    </a>
         </div>
 
         <div class="block lg:hidden">
@@ -171,22 +165,16 @@
                 <a href="/services/" class="nav-link duration-200 hover:opacity-60 mr-8 {{ if hasPrefix .RelPermalink "/services/" }}is-active{{ end }}">
                     SERVICES
                 </a>
-                <a href="/testimonials/" class="nav-link duration-200 hover:opacity-60 mr-8 {{ if hasPrefix .RelPermalink "/testimonials/" }}is-active{{ end }}">
-                    TESTIMONIALS
+
+                <a href="/news/" class="nav-link duration-200 hover:opacity-60 mr-8 {{ if hasPrefix .RelPermalink "/news/" }}is-active{{ end }}">
+                    BLOGS
                 </a>
 
-                <!-- BLOGS/CASE STUDIES ÏÂÀ­²Ëµ¥ -->
-                <div class="dropdown">
-                    <span class="nav-link duration-200 hover:opacity-60 mr-8 cursor-pointer {{ if or (hasPrefix .RelPermalink "/blog/") (hasPrefix .RelPermalink "/categories/turbotides/") }}is-active{{ end }}">
-                        BLOGS/CASE STUDIES
-                    </span>
-                    <div class="dropdown-content">
-                        <a href="/blog/news/">News</a>
-                        <a href="/blog/softwarecases/">Software Cases</a>
-                    </div>
-                </div>
+                <a href="/softwarecases/" class="nav-link duration-200 hover:opacity-60 mr-8 {{ if hasPrefix .RelPermalink "/softwarecases/" }}is-active{{ end }}">
+                    SOFTWARE CASES
+                </a>
 
-                <!-- OTHER SOFTWARE ÏÂÀ­²Ëµ¥ -->
+                <!-- OTHER SOFTWARE ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ -->
                 <div class="dropdown">
                     <span class="nav-link duration-200 hover:opacity-60 mr-8 cursor-pointer {{ if hasPrefix .RelPermalink "/other-software/" }}is-active{{ end }}">
                         OTHER SOFTWARE

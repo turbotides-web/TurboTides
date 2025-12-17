@@ -14,34 +14,34 @@
     {{- partial "head.html" . -}}
     {{ block "meta_tags" . }}{{end}}
 
-    {{/* Ö÷Ò³×¨ÓÃÑùÊ½ home.css£¬Ê×´ÎÌí¼ÓÊ±²»×ö bundle */}}
+    {{/* ï¿½ï¿½Ò³×¨ï¿½ï¿½ï¿½ï¿½Ê½ home.cssï¿½ï¿½ï¿½×´ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ bundle */}}
     {{ if .IsHome }}
     {{ $home := resources.Get "css/home.css" | minify | fingerprint }}
     <link rel="stylesheet" href="{{ $home.RelPermalink }}" integrity="{{ $home.Data.Integrity }}">
     {{ end }}
 
-    {{/* Software Ò³Ãæ×¨ÓÃÑùÊ½ */}}
+    {{/* Software Ò³ï¿½ï¿½×¨ï¿½ï¿½ï¿½ï¿½Ê½ */}}
     {{ if or (eq .Section "software") (eq .Type "software") }}
     {{ with resources.Get "css/software.css" | minify | fingerprint }}
     <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
     {{ end }}
     {{ end }}
 
-    {{/* Services Óë Contact ¸´ÓÃÍ¬Ò»±êÌâÑùÊ½ */}}
+    {{/* Services ï¿½ï¿½ Contact ï¿½ï¿½ï¿½ï¿½Í¬Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ */}}
     {{ if or (in (slice "services" "contact") .Section) (in (slice "services" "contact") .Type) }}
     {{ with resources.Get "css/services.css" | minify | fingerprint }}
     <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
     {{ end }}
     {{ end }}
 
-    {{/* Testimonials Ò³Ãæ×¨ÓÃÑùÊ½ */}}
+    {{/* Testimonials Ò³ï¿½ï¿½×¨ï¿½ï¿½ï¿½ï¿½Ê½ */}}
     {{ if or (eq .Section "testimonials") (eq .Type "testimonials") }}
     {{ with resources.Get "css/testimonials.css" | minify | fingerprint }}
     <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
     {{ end }}
     {{ end }}
 
-    {{/* Í¨ÓÃÒ³Ãæ±êÌâÑùÊ½ - Ö»ÎªÐèÒªµÄÒ³Ãæ¼ÓÔØ£¬ÅÅ³ýcontactÀàÐÍ */}}
+    {{/* Í¨ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ - Ö»Îªï¿½ï¿½Òªï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½Ø£ï¿½ï¿½Å³ï¿½contactï¿½ï¿½ï¿½ï¿½ */}}
     {{ $needsCommonPageStyles := or (and (eq .Section "blog") (or (eq .Type "softwarecases") (eq .Type "news"))) (eq .Section "other-software") }}
     {{ if $needsCommonPageStyles }}
     {{ with resources.Get "css/page-common.css" | minify | fingerprint }}
@@ -49,8 +49,8 @@
     {{ end }}
     {{ end }}
 
-    {{/* News ºÍ Software CasesÒ³Ãæ×¨ÓÃÑùÊ½ - ÐèÒªÔÚ page-common.css Ö®ºó¼ÓÔØ */}}
-    {{ $isNewsOrCases := or .Params.is_news_page (hasPrefix .RelPermalink "/blog/news/") (hasPrefix .RelPermalink "/blog/softwarecases/") }}
+    {{/* News ï¿½ï¿½ Software CasesÒ³ï¿½ï¿½×¨ï¿½ï¿½ï¿½ï¿½Ê½ - ï¿½ï¿½Òªï¿½ï¿½ page-common.css Ö®ï¿½ï¿½ï¿½ï¿½ï¿½ */}}
+    {{ $isNewsOrCases := or .Params.is_news_page (hasPrefix .RelPermalink "/news/") (hasPrefix .RelPermalink "/softwarecases/") }}
     {{ if $isNewsOrCases }}
     {{ with resources.Get "css/news.css" | minify | fingerprint }}
     <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">

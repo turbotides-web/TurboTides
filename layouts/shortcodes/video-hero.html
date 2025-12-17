@@ -11,14 +11,14 @@
         <a class="hero-news-item" href="{{ .link }}">{{ .title }}</a>
         {{ end }}
         {{ else }}
-        <a class="hero-news-item" href="/blog/news/news1/">TurboTides CFD Meets NASA High Efficiency Centrifugal Compressor</a>
+        <a class="hero-news-item" href="/news/news1/">TurboTides CFD Meets NASA High Efficiency Centrifugal Compressor</a>
         {{ end }}
     </div>
 
     <div class="hero-headlines">
         <h4 class="hero-line-1 hero-text-animate" data-delay="0.3">{{ .Get "headline" }}</h4>
 
-        <!-- À¶É«ÏßÌõÍ¼Æ¬£¬·ÅÔÚTURBOTIDESÉÏ·½ -->
+        <!-- ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½TURBOTIDESï¿½Ï·ï¿½ -->
         <div class="hero-blue-line hero-text-animate" data-delay="0.5">
             <img src="/img/home/slide-blue-line.png" alt="">
         </div>
@@ -56,7 +56,7 @@
             animation-delay: 0.9s;
         }
 
-    /* À¶É«ÏßÌõÑùÊ½ - ÏòÓÒÒÆ¶¯ */
+    /* ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ - ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ */
     .hero-blue-line {
         display: flex;
         justify-content: center;
@@ -73,7 +73,7 @@
             object-fit: contain;
         }
 
-    /* TURBOTIDES µÄËõ·Å¶¯»­Ð§¹û - Ö»ÓÐÓÉ´óµ½Ð¡µÄÊÓ¾õ³å»÷ */
+    /* TURBOTIDES ï¿½ï¿½ï¿½ï¿½ï¿½Å¶ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ - Ö»ï¿½ï¿½ï¿½É´ï¿½Ð¡ï¿½ï¿½ï¿½Ó¾ï¿½ï¿½ï¿½ï¿½ */
     .hero-text-scale-in {
         opacity: 0;
         transform: scale(2.5);
@@ -92,7 +92,7 @@
         }
     }
 
-    /* TURBOTIDES Ëõ·Å¶¯»­ - ´Ó´óµ½Ð¡µÄÊÓ¾õ³å»÷ */
+    /* TURBOTIDES ï¿½ï¿½ï¿½Å¶ï¿½ï¿½ï¿½ - ï¿½Ó´ï¿½Ð¡ï¿½ï¿½ï¿½Ó¾ï¿½ï¿½ï¿½ï¿½ */
     @keyframes heroTextScaleIn {
         0% {
             opacity: 0;
@@ -110,12 +110,12 @@
         }
     }
 
-    /* È·±£¶¯»­ÔÚÒ³Ãæ¼ÓÔØºóÆô¶¯ */
+    /* È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½Øºï¿½ï¿½ï¿½ï¿½ï¿½ */
     .hero-text-animate.animate-start {
         animation-play-state: running;
     }
 
-    /* ÊÊÅäÒÆ¶¯¶ËµÄ¶¯»­Ð§¹û */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ËµÄ¶ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ */
     @media (max-width: 480px) {
         .hero-text-animate:not(.hero-text-scale-in) {
             transform: translateY(20px);
@@ -124,7 +124,7 @@
         .hero-blue-line {
             height: 8px;
             margin: 0.2rem 0 -0.2rem 0;
-            transform: translateX(25px) !important; /* ÒÆ¶¯¶ËÏòÓÒÒÆ¶¯30px */
+            transform: translateX(25px) !important; /* ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½30px */
         }
 
             .hero-blue-line img {
@@ -185,7 +185,7 @@
 </style>
 
 <script>document.addEventListener('DOMContentLoaded', function() {
-    // µÈ´ýÒ³ÃæÍêÈ«¼ÓÔØºóÆô¶¯¶¯»­
+    // ï¿½È´ï¿½Ò³ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½Øºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     setTimeout(function() {
         const heroTexts = document.querySelectorAll('.hero-text-animate');
         heroTexts.forEach(text => {

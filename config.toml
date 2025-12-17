@@ -8,20 +8,8 @@ enableInlineShortcodes = true
 theme = "tella"
 enableRobotsTXT = true
 
-
-# Please enable this feature if the site is available in Japanese, Chinese or Korean.
-#hasCJKLanguage = true
-
-# If you're using Google Analytics, you can enable this feature.
-#googleAnalytics = "UA-12345678-1"
-
-# Disqus Comment System
-#disqusShortname = ""
-
-# Allow rendering of raw HTML in Markdown files
 [markup]
   goldmark = { renderer = { unsafe = true } }
-
 
 [params]
   showBlog = true
@@ -29,12 +17,9 @@ enableRobotsTXT = true
   googleFonts = true
 
   [params.logo]
-    main = "img/logo/logo.svg"
+    main = "img/logo/tt_logo.png"
     alt = "TurboTides Logo"
-
-    # The size parameter is the class name of tailwindcss
-    # https://tailwindcss.com/
-    size = "h-10"
+    size = "h-16"
 
   [params.site]
     name = "TURBOTIDES"
@@ -76,30 +61,16 @@ enableRobotsTXT = true
     weight = 3
 
   [[menu.main]]
-    identifier = "testimonials"
-    name = "TESTIMONIALS"
-    url = "/testimonials/"
+    identifier = "news"
+    name = "BLOGS"
+    url = "/news/"
     weight = 4
 
   [[menu.main]]
-    identifier = "blog"
-    name = "BLOGS/CASE STUDIES"
-    url = ""
-    weight = 5
-
-  [[menu.main]]
-    identifier = "news"
-    parent = "blog"
-    name = "News"
-    url = "/blog/news/"
-    weight = 51
-
-  [[menu.main]]
     identifier = "software-cases"
-    parent = "blog"
-    name = "Software Cases"
-    url = "/blog/softwarecases/"
-    weight = 52
+    name = "SOFTWARE CASES"
+    url = "/softwarecases/"
+    weight = 5
 
   [[menu.main]]
     identifier = "other-software"

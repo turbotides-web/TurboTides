@@ -38,7 +38,8 @@
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.55));
+        /* background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.55)); */
+    background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,0));
 }
 
 /* === 3. Hero 内容区域 === */
