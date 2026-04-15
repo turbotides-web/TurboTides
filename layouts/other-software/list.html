@@ -55,20 +55,6 @@
                 </a>
                 {{ end }}
             </div>
-            {{ else }}
-            <div class="empty-state">
-                <div class="icon">🚀</div>
-                {{ if hasPrefix .RelPermalink "/other-software/products/" }}
-                <h3>Products Coming Soon</h3>
-                <p>We're actively developing innovative software products and will launch them soon. Stay tuned for exciting updates and cutting-edge solutions!</p>
-                {{ else if hasPrefix .RelPermalink "/other-software/cases/" }}
-                <h3>Case Studies in Development</h3>
-                <p>We're preparing comprehensive case studies to showcase real-world applications of our software solutions. Please check back soon for detailed insights.</p>
-                {{ else }}
-                <h3>Content Coming Soon</h3>
-                <p>We're working hard to bring you valuable content. Please check back later for updates.</p>
-                {{ end }}
-            </div>
             {{ end }}
 
             {{ if gt .Paginator.TotalPages 1 }}

@@ -362,3 +362,32 @@ main > .mx-auto:first-child {
     text-align: center;
     padding: 20px 0; /* 适当的上下间距 */
 }
+
+.feature-card-disabled {
+    cursor: default;
+    opacity: 0.92;
+}
+
+.feature-card-disabled:hover {
+    transform: none;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.feature-card-disabled:hover .feature-icon,
+.feature-card-disabled:hover .material-icons,
+.feature-card-disabled:hover .feature-title {
+    transform: none;
+    color: inherit;
+}
+
+.feature-status {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.45rem 0.9rem;
+    border-radius: 9999px;
+    background: #e2e8f0;
+    color: #475569;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
