@@ -14,34 +14,34 @@
     {{- partial "head.html" . -}}
     {{ block "meta_tags" . }}{{end}}
 
-    {{/* ��ҳר����ʽ home.css���״�����ʱ���� bundle */}}
+    {{/* Homepage-specific styles stay separate from the shared bundle. */}}
     {{ if .IsHome }}
     {{ $home := resources.Get "css/home.css" | minify | fingerprint }}
     <link rel="stylesheet" href="{{ $home.RelPermalink }}" integrity="{{ $home.Data.Integrity }}">
     {{ end }}
 
-    {{/* Software ҳ��ר����ʽ */}}
+    {{/* Software section styles. */}}
     {{ if or (eq .Section "software") (eq .Type "software") }}
     {{ with resources.Get "css/software.css" | minify | fingerprint }}
     <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
     {{ end }}
     {{ end }}
 
-    {{/* Services �� Contact ����ͬһ������ʽ */}}
+    {{/* Services and contact share the same stylesheet. */}}
     {{ if or (in (slice "services" "contact") .Section) (in (slice "services" "contact") .Type) }}
     {{ with resources.Get "css/services.css" | minify | fingerprint }}
     <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
     {{ end }}
     {{ end }}
 
-    {{/* Testimonials ҳ��ר����ʽ */}}
+    {{/* Testimonials section styles. */}}
     {{ if or (eq .Section "testimonials") (eq .Type "testimonials") }}
     {{ with resources.Get "css/testimonials.css" | minify | fingerprint }}
     <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
     {{ end }}
     {{ end }}
 
-    {{/* ͨ��ҳ�������ʽ - ֻΪ��Ҫ��ҳ����أ��ų�contact���� */}}
+    {{/* Common internal page styles, excluding services/contact. */}}
     {{ $needsCommonPageStyles := or (and (eq .Section "blog") (or (eq .Type "softwarecases") (eq .Type "news"))) (eq .Section "other-software") }}
     {{ if $needsCommonPageStyles }}
     {{ with resources.Get "css/page-common.css" | minify | fingerprint }}
@@ -49,7 +49,7 @@
     {{ end }}
     {{ end }}
 
-    {{/* News �� Software Casesҳ��ר����ʽ - ��Ҫ�� page-common.css ֮����� */}}
+    {{/* News and software case styles load after page-common.css. */}}
     {{ $isNewsOrCases := or .Params.is_news_page (hasPrefix .RelPermalink "/news/") (hasPrefix .RelPermalink "/softwarecases/") }}
     {{ if $isNewsOrCases }}
     {{ with resources.Get "css/news.css" | minify | fingerprint }}
