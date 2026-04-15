@@ -26,3 +26,4 @@ node_modules/
 *.tmp
 *.temp
 tt-web-github-recovery-codes.txt
+cli-workspace/
