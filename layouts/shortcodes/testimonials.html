@@ -27,7 +27,7 @@
         {{ $items = $items | append (dict "quote" $q "author" $a "logo" $lg) }}
         {{ end }}
         {{ else }}
-        {{ with site.Data.testimonials.items }}{{ $items = . }}{{ end }}
+        {{ with hugo.Data.testimonials.items }}{{ $items = . }}{{ end }}
         {{ end }}
 
         {{ if eq (len $items) 0 }}

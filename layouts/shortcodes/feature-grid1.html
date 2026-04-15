@@ -1,7 +1,7 @@
 <div class="features-grid1">
-    {{ $items := .Site.Data.feature_grid1 }}
+    {{ $items := hugo.Data.feature_grid1 }}
     {{ if not $items }}
-    {{ $items = index .Site.Data "feature-grid1" }}
+    {{ $items = index hugo.Data "feature-grid1" }}
     {{ end }}
     {{ range $items }}
     <a href="{{ .doc_url }}" class="feature-card">
