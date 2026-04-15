@@ -22,11 +22,11 @@
 {{- else if .Summary }}
 <meta name="description" content="{{ .Summary }}" />
 <meta property="og:description" content="{{ .Summary }}" />
-<meta property="twitter:description" content="{{ .Description }}" />
+<meta property="twitter:description" content="{{ .Summary }}" />
 {{- else if .Site.Params.description }}
-<meta name="description" content="{{ .Description }}" />
-<meta property="og:description" content="{{ .Description }}" />
-<meta property="twitter:description" content="{{ .Description }}" />
+<meta name="description" content="{{ .Site.Params.description }}" />
+<meta property="og:description" content="{{ .Site.Params.description }}" />
+<meta property="twitter:description" content="{{ .Site.Params.description }}" />
 {{- end }}
 
 {{ end }}
@@ -34,12 +34,12 @@
 {{ define "main" }}
 <section class="services-page">
     <div class="services-wrap">
-        <!-- 使用与Services页面完全一致的标题样式 -->
+        <!-- Reuse the same title styling as the services page. -->
         <h1 class="s-page-title">{{ .Title }}</h1>
         <p class="s-page-description">{{ .Description }}</p>
 
         <div class="services-page-content">
-            <!-- 页面描述段落 - 移除白色背景 -->
+            <!-- Intro copy without the old white card treatment. -->
             <div class="contact-intro">
                 <div class="content">{{ .Content }}</div>
             </div>
@@ -48,12 +48,10 @@
 </section>
 
 <style>
-    /* Contact页面专用样式 - 移除白色背景，保持透明 */
+    /* Contact-page-specific intro styling. */
     .contact-intro {
-        /* 移除 background: white; */
-        /* 移除 border-radius: 12px; */
-        /* 移除 box-shadow */
-        padding: 0; /* 移除内边距 */
+        /* Keep this section visually lightweight. */
+        padding: 0;
         margin-bottom: 2rem;
         opacity: 0;
         transform: translateY(20px);
@@ -80,7 +78,7 @@
                     margin-bottom: 0;
                 }
 
-    /* 响应式设计 */
+    /* Responsive adjustments. */
     @media (max-width: 768px) {
         .contact-intro {
             margin-bottom: 1.5rem;
@@ -93,7 +91,7 @@
 </style>
 
 <script>document.addEventListener('DOMContentLoaded', function() {
-    // 使用与Services页面一致的动画逻辑
+    // Match the services page reveal timing.
     setTimeout(function() {
         const title = document.querySelector('.s-page-title');
         if (title) {
@@ -110,7 +108,7 @@
         }
     }, 350);
 
-    // 添加Contact介绍部分的动画效果
+    // Reveal the intro copy after the heading and description.
     setTimeout(function() {
         const intro = document.querySelector('.contact-intro');
         if (intro) {
