@@ -391,3 +391,12 @@ main > .mx-auto:first-child {
     font-weight: 600;
     letter-spacing: 0.02em;
 }
+
+.section-status-note {
+    margin: 1.5rem auto 0;
+    max-width: 960px;
+    color: #5f6b76;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    text-align: center;
+}

@@ -45,21 +45,6 @@
 
         <div class="common-page-content">
             <div class="content py-1">{{.Content}}</div>
-
-            {{ $paginator := .Paginate (where .Data.Pages "Type" "in" site.Params.mainSections) 6 }}
-            {{ if $paginator.Pages }}
-            <div class="items-grid">
-                {{ range $paginator.Pages }}
-                <a href="{{ .Permalink }}">
-                    {{ partial "summary.html" . }}
-                </a>
-                {{ end }}
-            </div>
-            {{ end }}
-
-            {{ if gt .Paginator.TotalPages 1 }}
-            {{ partial "paginator.html" . }}
-            {{ end }}
         </div>
     </div>
 </section>

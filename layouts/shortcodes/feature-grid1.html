@@ -3,6 +3,12 @@
     {{ if not $items }}
     {{ $items = index hugo.Data "feature-grid1" }}
     {{ end }}
+    {{ $hasUnpublished := false }}
+    {{ range $items }}
+    {{ if not .doc_url }}
+    {{ $hasUnpublished = true }}
+    {{ end }}
+    {{ end }}
     {{ range $items }}
     {{ if .doc_url }}
     <a href="{{ .doc_url }}" class="feature-card">
@@ -31,3 +37,6 @@
     {{ end }}
     {{ end }}
 </div>
+{{ if $hasUnpublished }}
+<p class="section-status-note">Additional product pages will be published here over time.</p>
+{{ end }}
