@@ -51,19 +51,24 @@ This is intentional documentation of the repo's current working state, not a sta
 
 ## About `package.json`
 
-The repo also contains npm/Tailwind scripts inherited from the Tella theme:
+The repo still contains inherited npm/Tailwind scripts from the Tella theme, but the root npm entry points now map to the verified Hugo workflow:
 
 - `npm run start`
 - `npm run build`
 
-These scripts currently target `themes/tella/assets/css/...`, while the active root templates load CSS from `assets/css/...`.
+Legacy theme-era commands are still available as:
+
+- `npm run legacy:start`
+- `npm run legacy:build`
+
+Those legacy scripts still target `themes/tella/assets/css/...`, while the active root templates load CSS from `assets/css/...`.
 
 That means:
 
-- the npm/Tailwind path is not yet the trusted source of truth for production output
+- the legacy npm/Tailwind path is not yet the trusted source of truth for production output
 - future cleanup should reconcile the CSS pipeline before relying on the npm scripts as canonical
 
-Until that cleanup is done, prefer the verified Hugo commands above for site generation and verification.
+Until that cleanup is done, prefer `npm run start`, `npm run build`, or the equivalent Hugo commands above for normal site generation and verification.
 
 ## Maintenance Notes
 
