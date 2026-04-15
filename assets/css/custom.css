@@ -1,11 +1,10 @@
-/* 
+/*
  This CSS file is used to override the existing styles of the theme.
  You can change the article headings, fonts, colors, etc.
 */
 
-
-/* ====== Header & 首页透明模式 ====== */
-/* 固定头部在最顶部，去掉占位空白 */
+/* ====== Header & Homepage Transparent Mode ====== */
+/* Fixed header pinned to the top with no extra spacing. */
 .site-header {
     position: fixed;
     top: 0;
@@ -16,30 +15,30 @@
     padding: 0;
 }
 
-/* 主导航基础布局（去掉旧 p-8 垂直巨型内边距） */
+/* Main navigation base layout with reduced vertical padding. */
 .main-nav {
     width: 100%;
-    padding: 0.85rem 1.75rem; /* 高度适中 */
+    padding: 0.85rem 1.75rem; /* Balanced header height. */
     background: rgba(255,255,255,0.96);
     backdrop-filter: blur(3px);
     transition: background .35s ease, padding .25s ease;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-/* 首页透明（初始） */
+/* Homepage header starts fully transparent. */
 .home-header .main-nav {
     background: transparent !important;
     box-shadow: none !important;
 }
 
-/* 首页滚动后半透明出现（配合 body.home-transparent.scrolled 逻辑） */
+/* Homepage header darkens after scroll. */
 body.home-transparent.scrolled .home-header .main-nav {
     background: rgba(10,20,30,0.72) !important;
     backdrop-filter: blur(6px);
     box-shadow: 0 4px 14px -4px rgba(0,0,0,0.35);
 }
 
-/* 桌面导航链接颜色控制 */
+/* Desktop navigation link colors on the homepage. */
 .home-header .main-nav .nav-link {
     color: #fff !important;
 }
@@ -48,16 +47,17 @@ body.home-transparent.scrolled .home-header .main-nav {
     color: #111 !important;
 }
 
-/* 使内容不被固定头部遮挡：非首页加顶部补偿 */
+/* Offset main content below the fixed header on non-home pages. */
 body:not(.home-transparent) main {
-    padding-top: 110px; /* 约等于头部高度，可按视觉微调 */
+    padding-top: 110px; /* Approximate header height; adjust if needed. */
 }
-/* 首页：视频在后面铺底，不加补偿 */
+
+/* Homepage hero stays flush with the top. */
 body.home-transparent main {
     padding-top: 0;
 }
 
-/* 汉堡按钮样式（保留） */
+/* Hamburger button styling. */
 .hamburger-btn {
     display: flex;
     flex-direction: column;
@@ -66,14 +66,14 @@ body.home-transparent main {
     height: 34px;
 }
 
-    .hamburger-btn .hb-bar {
-        display: block;
-        height: 3px;
-        width: 100%;
-        background: #222;
-        border-radius: 2px;
-        transition: .3s;
-    }
+.hamburger-btn .hb-bar {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: #222;
+    border-radius: 2px;
+    transition: .3s;
+}
 
 .home-header .hamburger-btn .hb-bar {
     background: #fff;
@@ -83,21 +83,21 @@ body.home-transparent.scrolled .home-header .hamburger-btn .hb-bar {
     background: #fff;
 }
 
-/* 桌面链接组靠右 */
+/* Right-aligned desktop navigation cluster. */
 .desktop-links {
     display: flex;
     align-items: center;
     gap: 2.2rem;
 }
 
-/* 响应隐藏（保留主题逻辑） */
+/* Hide desktop links at smaller breakpoints. */
 @media (max-width:1023px) {
     .desktop-links {
         display: none;
     }
 }
 
-/* 链接下划线效果 */
+/* Link underline hover effect. */
 .nav-link {
     position: relative;
     font-weight: 500;
@@ -105,26 +105,26 @@ body.home-transparent.scrolled .home-header .hamburger-btn .hb-bar {
     padding: .2rem 0;
 }
 
-    .nav-link::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: -4px;
-        height: 2px;
-        background: currentColor;
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: .25s;
-        border-radius: 2px;
-    }
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 2px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: .25s;
+    border-radius: 2px;
+}
 
-    .nav-link:hover::after,
-    .nav-link:focus-visible::after {
-        transform: scaleX(1);
-    }
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+    transform: scaleX(1);
+}
 
-/* 覆盖旧 overlay 占位问题：默认隐藏（避免把导航挤到中间） */
+/* Full-screen mobile overlay menu. */
 #overlay {
     display: none;
     position: fixed;
@@ -136,87 +136,82 @@ body.home-transparent.scrolled .home-header .hamburger-btn .hb-bar {
     margin: 0;
 }
 
-    #overlay.open {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+#overlay.open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-    #overlay ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 1.6rem;
-    }
+#overlay ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+}
 
-    #overlay a {
-        font-size: 2rem;
-        color: #fff;
-        text-decoration: none;
-        font-weight: 600;
-        letter-spacing: .5px;
-        transition: opacity .25s;
-    }
+#overlay a {
+    font-size: 2rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: .5px;
+    transition: opacity .25s;
+}
 
-        #overlay a:hover {
-            opacity: .7;
-        }
+#overlay a:hover {
+    opacity: .7;
+}
 
-/* 防止 body 滚动（移动端菜单展开） */
+/* Prevent background scroll while the mobile menu is open. */
 .no-scroll {
     overflow: hidden;
 }
 
-/* Hero 视频容器允许盖在 body 背景下，但不挡头部 */
+/* Hero media can sit behind the transparent homepage header. */
 .hero-video-wrapper {
     position: relative;
     z-index: 0;
     margin-top: 0;
 }
 
-/* 首页 hero 紧贴顶部 */
+/* Homepage hero stays tight to the top edge. */
 body.home-transparent .hero-video-wrapper {
     padding-top: 0;
 }
 
-/* 如果某些生成页面仍被整体下移，检查是否有 mt-*，可强制覆盖： */
+/* Guard against stray top margins on the first main content block. */
 main .mx-auto:first-child,
 main > .mx-auto:first-child {
     margin-top: 0 !important;
 }
 
-/* === 当前导航高亮 (下划线+加粗) === */
+/* Active navigation link treatment. */
 .nav-link.is-active {
     font-weight: 600;
 }
 
-    .nav-link.is-active::after {
-        transform: scaleX(1);
-    }
-
-
-
-
-
-/* ====== 其它样式（产品/文本等） ====== */
-
-/* About and Contact页面文本内容样式*/
-.about-text-container {
-    word-wrap: break-word; /* 允许长单词换行 */
-    white-space: normal; /* 默认行为，允许换行 */
-    hyphens: auto; /* 自动添加连字符 */
+.nav-link.is-active::after {
+    transform: scaleX(1);
 }
 
-    .about-text-container p {
-        display: block;
-        margin-top: 0; /* 重置上外边距 */
-        text-align: justify; /* 让文本两端对齐 */
-    }
+/* ====== Other Shared Styles ====== */
 
+/* About and contact text blocks. */
+.about-text-container {
+    word-wrap: break-word; /* Allow long words to wrap. */
+    white-space: normal; /* Use normal text wrapping. */
+    hyphens: auto; /* Enable automatic hyphenation. */
+}
 
-/* Products内feature-grid1（四宫格）样式 */
+.about-text-container p {
+    display: block;
+    margin-top: 0; /* Reset inherited top margin. */
+    text-align: justify; /* Use justified body copy. */
+}
+
+/* Products section feature grid. */
 .features-grid1 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -234,42 +229,42 @@ main > .mx-auto:first-child {
     transition: all 0.3s ease;
     text-decoration: none;
     color: inherit;
-    min-height: 278px; /* 设置最小高度 */
+    min-height: 278px; /* Keep card heights consistent. */
 }
 
-    .feature-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-    }
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
 
 .feature-content {
     text-align: center;
 }
 
-    .feature-content .material-icons {
-        font-size: 48px;
-        color: #0a577a;
-        margin-bottom: 1rem;
-        display: block;
-        transition: transform 0.3s ease; /* 添加过渡效果 */
-    }
+.feature-content .material-icons {
+    font-size: 48px;
+    color: #0a577a;
+    margin-bottom: 1rem;
+    display: block;
+    transition: transform 0.3s ease; /* Icon hover animation. */
+}
 
 .feature-card:hover .material-icons {
-    transform: scale(1.1); /* 悬停时图标放大 */
+    transform: scale(1.1); /* Enlarge icon on hover. */
 }
 
 .feature-icon {
     width: 48px;
     height: 48px;
-    margin: 0 auto 1rem; /* 上0 左右auto 下1rem，确保居中 */
+    margin: 0 auto 1rem; /* Center icon above the heading. */
     display: block;
     object-fit: contain;
     color: #0a577a;
-    transition: transform 0.3s ease; /* 与material-icons保持一致的过渡效果 */
+    transition: transform 0.3s ease; /* Match material icon hover animation. */
 }
 
 .feature-card:hover .feature-icon {
-    transform: scale(1.1); /* 悬停时图标放大，与material-icons保持一致 */
+    transform: scale(1.1); /* Enlarge icon on hover. */
 }
 
 .feature-title {
@@ -282,7 +277,7 @@ main > .mx-auto:first-child {
 }
 
 .feature-card:hover .feature-title {
-    color: #1867cf; /* 悬停时颜色变化 */
+    color: #1867cf; /* Shift title color on hover. */
 }
 
 .feature-description {
@@ -294,7 +289,7 @@ main > .mx-auto:first-child {
 
 @media (max-width: 768px) {
     .features-grid1 {
-        grid-template-columns: 1fr; /* 在移动端改为单列 */
+        grid-template-columns: 1fr; /* Collapse to one column on mobile. */
         gap: 1.5rem;
         padding: 1rem;
     }
@@ -305,62 +300,59 @@ main > .mx-auto:first-child {
     }
 }
 
-
-
-/* TurboTides产品介绍页面图片/视频媒体内容样式 */
-/* 基础布局 */
+/* TurboTides product media/content side-by-side layout. */
 .layout-side-by-side {
     display: flex;
-    align-items: center; /* 让图片和文本块整体垂直居中 */
-    justify-content: flex-start; /* 确保内容从左侧开始对齐 */
+    align-items: center; /* Vertically align media and text blocks. */
+    justify-content: flex-start; /* Keep content aligned from the left. */
     gap: 2rem;
-    max-width: 1200px; /* 减小最大宽度 */
+    max-width: 1200px; /* Limit overall layout width. */
     margin: 0 auto;
 }
 
-    .layout-side-by-side .media-container {
-        flex: 0 0 auto;
-        width: 35%; /* 让图片占40%宽度 */
-        display: flex;
-        align-items: center; /* 确保图片垂直居中 */
-    }
+.layout-side-by-side .media-container {
+    flex: 0 0 auto;
+    width: 35%; /* Media takes about one-third of the row. */
+    display: flex;
+    align-items: center; /* Center media vertically. */
+}
 
-    .layout-side-by-side .content-container {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center; /* 确保文本块整体垂直居中 */
-        align-items: flex-start; /* 确保文本左对齐 */
-        height: 100%; /* 让其撑满父容器 */
-        padding: 1rem 0;
-    }
+.layout-side-by-side .content-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center the text block vertically. */
+    align-items: flex-start; /* Left-align text content. */
+    height: 100%; /* Fill the row height. */
+    padding: 1rem 0;
+}
 
-/* 媒体内容样式 */
+/* Embedded media treatment. */
 .media-container video {
     width: 100%;
     height: auto;
-    object-fit: contain; /* 保持图片比例 */
+    object-fit: contain; /* Preserve media aspect ratio. */
 }
 
 .small-image {
     width: 70%;
-    height: auto; /* 设置为你想要的宽度 */
+    height: auto; /* Constrain width while preserving aspect ratio. */
 }
 
-/* 轮播图背景渐变 */
+/* Full-width dark fade background for carousel/hero overlays. */
 .s-fade-bg {
-    background: rgba(0, 0, 0, 0.5); /* 半透明黑色背景 */
-    width: 100vw; /* 让背景扩展整个屏幕宽度 */
-    min-height: 150px; /* 设置最小高度，防止过高 */
-    max-height: 40vh; /* 限制最大高度，不会太高 */
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background. */
+    width: 100vw; /* Extend the background across the viewport. */
+    min-height: 150px; /* Prevent the band from becoming too short. */
+    max-height: 40vh; /* Prevent it from becoming too tall. */
     position: absolute;
     left: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* 让内容在垂直方向上居中 */
-    align-items: center; /* 让内容在水平方向上居中 */
+    justify-content: center; /* Center content vertically. */
+    align-items: center; /* Center content horizontally. */
     text-align: center;
-    padding: 20px 0; /* 适当的上下间距 */
+    padding: 20px 0; /* Add vertical breathing room. */
 }
 
 .feature-card-disabled {
