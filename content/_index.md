@@ -2,6 +2,10 @@
 title: "Home"
 # 可选：首页配置，例如新闻、轮播图片、Testimonials 的引用方式
 news:
+  - title: "TurboTides CFD Meets NASA High-Efficiency Centrifugal Compressor"
+    link: "/blog/case-study-hecc/"
+  - title: "New Release: TurboTides 2025R1 Release Information"
+    link: "https://spinpous.com/25R1release_infomation.htm"
 
 carousel:
 
