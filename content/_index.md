@@ -5,7 +5,7 @@ news:
   - title: "TurboTides CFD Meets NASA High-Efficiency Centrifugal Compressor"
     link: "/blog/case-study-hecc/"
   - title: "New Release: TurboTides 2025R1 Release Information"
-    link: "/docs/TurboTides-2025R1-Release-Information.pdf"
+    link: "/releases/turbotides-2025r1/"
 
 carousel:
 
