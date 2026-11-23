@@ -5,7 +5,7 @@
     <div class="hero-overlay"></div>
 
     {{ $page := .Page }}
-    {{ $item := dict "title" "TurboTides CFD Meets NASA High Efficiency Centrifugal Compressor" "link" "/news/news1/" }}
+    {{ $item := dict "title" "TurboTides CFD Meets NASA High Efficiency Centrifugal Compressor" "link" "/blog/case-study-hecc/" }}
     {{ with $page.Params.news }}{{ $item = index . 0 }}{{ end }}
     <a class="hero-news-card" href="{{ $item.link }}">
         {{ with $item.label }}<span class="hero-news-label">{{ . }}</span>{{ end }}

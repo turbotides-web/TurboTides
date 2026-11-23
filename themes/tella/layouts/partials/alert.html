@@ -1,6 +1,6 @@
-{{if .Site.Data.alert}}
+{{if hugo.Data.alert}}
 <div class="bg-red-600 py-2">
-    {{ range .Site.Data.alert }}
+    {{ range hugo.Data.alert }}
     <p class="ml-2 text-md text-white">>> {{ .date }} {{ .alert }}</p>
     {{ end }}
 </div>

@@ -3,8 +3,12 @@ title: "Home"
 # 可选：首页配置，例如新闻、轮播图片、Testimonials 的引用方式
 news:
   - title: "Federal Jury Finds No Copyright Infringement by TurboTides"
-    link: "/news/jury-verdict-statement/"
+    link: "/blog/jury-verdict-statement/"
     label: "Official Statement · November 20, 2026"
+  - title: "TurboTides CFD Meets NASA High-Efficiency Centrifugal Compressor"
+    link: "/blog/case-study-hecc/"
+  - title: "New Release: TurboTides 2025R1 Release Information"
+    link: "/releases/turbotides-2025r1/"
 
 carousel:
 

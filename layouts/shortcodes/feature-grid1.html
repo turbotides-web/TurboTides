@@ -1,9 +1,16 @@
 <div class="features-grid1">
-    {{ $items := .Site.Data.feature_grid1 }}
+    {{ $items := hugo.Data.feature_grid1 }}
     {{ if not $items }}
-    {{ $items = index .Site.Data "feature-grid1" }}
+    {{ $items = index hugo.Data "feature-grid1" }}
+    {{ end }}
+    {{ $hasUnpublished := false }}
+    {{ range $items }}
+    {{ if not .doc_url }}
+    {{ $hasUnpublished = true }}
+    {{ end }}
     {{ end }}
     {{ range $items }}
+    {{ if .doc_url }}
     <a href="{{ .doc_url }}" class="feature-card">
         <div class="feature-content">
             {{ if .icon_img }}
@@ -15,5 +22,21 @@
             <p class="feature-description">{{ .description }}</p>
         </div>
     </a>
+    {{ else }}
+    <div class="feature-card feature-card-disabled" aria-disabled="true">
+        <div class="feature-content">
+            {{ if .icon_img }}
+            <img src="{{ .icon_img }}" alt="{{ .title }} icon" class="feature-icon">
+            {{ else if .icon }}
+            <span class="material-icons">{{ .icon }}</span>
+            {{ end }}
+            <h3 class="feature-title">{{ .title }}</h3>
+            <p class="feature-description">{{ .description }}</p>
+        </div>
+    </div>
     {{ end }}
+{{ end }}
 </div>
+{{ if $hasUnpublished }}
+<p class="section-status-note">More solutions are on the way! Check back soon as we expand this section with additional software pages.</p>
+{{ end }}

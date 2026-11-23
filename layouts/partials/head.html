@@ -19,18 +19,8 @@
 {{/* 样式管线 */}}
 {{ $main := resources.Get "css/style.css" }}
 {{ $custom := resources.Get "css/custom.css" | default nil }}
-{{ $home := cond .IsHome (resources.Get "css/home.css" | default nil) nil }}
-{{ $isNews := or .Params.is_news_page (hasPrefix .RelPermalink "/news/") }}
-{{ $news := cond $isNews (resources.Get "css/news.css" | default nil) nil }}
-{{ $isCommonPage := or .Params.is_common_page (eq .Type "softwarecases") (hasPrefix .RelPermalink "/other-software/") }}
-{{ $commonPage := cond $isCommonPage (resources.Get "css/page-common.css" | default nil) nil }}
-
 {{ $list := slice $main }}
 {{ if $custom }}{{ $list = $list | append $custom }}{{ end }}
-{{ if $home }}{{ $list = $list | append $home }}{{ end }}
-{{ if $news }}{{ $list = $list | append $news }}{{ end }}
-{{ if $commonPage }}{{ $list = $list | append $commonPage }}{{ end }}
-
 {{ $bundle := $list | resources.Concat "css/site-bundle.css" }}
 {{ if hugo.IsServer }}
 <link rel="stylesheet" href="{{ $bundle.RelPermalink }}">

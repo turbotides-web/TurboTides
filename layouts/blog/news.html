@@ -1,4 +1,4 @@
-{{ define "main" }}
+锘縶{ define "main" }}
 <section class="news-page services-page">
     <div class="services-wrap">
         <h1 class="s-page-title" data-ani="fade-up">{{ .Title | default "News" }}</h1>
@@ -8,10 +8,13 @@
         <p class="s-page-description" data-ani="fade-up">Latest updates, releases and activities.</p>
         {{ end }}
 
-        {{/* 取最近 4 条（真实内容不足则补占位） */}}
-        {{ $all := .Pages.ByDate.Reverse }}
-        {{ $pages := first 4 $all }}
-        {{ $realCount := len $pages }}
+        {{ $pages := slice }}
+        {{ range site.RegularPages }}
+            {{ if and (hasPrefix .RelPermalink "/blog/") (not (hasPrefix .RelPermalink "/blog/softwarecases/")) }}
+                {{ $pages = $pages | append . }}
+            {{ end }}
+        {{ end }}
+        {{ $pages = sort $pages "Date" "desc" }}
         <div class="news-vertical">
             {{ range $pages }}
             <article class="news-item" data-ani="fade-in">
@@ -35,40 +38,6 @@
                     <a class="news-readmore-link" href="{{ .RelPermalink }}">Read more ></a>
                 </div>
             </article>
-            {{ end }}
-
-            {{/* 自动补占位到 4 条 */}}
-            {{ $needed := sub 4 $realCount }}
-            {{ if gt $needed 0 }}
-            {{ range $i, $_ := seq $needed }}
-            {{/* 1-based 索引 */}}
-            {{ $idx := add $i 1 }}
-            {{ $title := "" }}
-            {{ $excerpt := "" }}
-            {{ if eq $idx 1 }}
-            {{ $title = "TurboTides 2025 Q3 Feature Highlights" }}
-            {{ $excerpt = "Preview of upcoming usability improvements, integrated post-processing enhancements and workflow automation upgrades planned for the next quarterly feature update." }}
-            {{ else if eq $idx 2 }}
-            {{ $title = "Upcoming Webinar: High-Fidelity CFD Workflow" }}
-            {{ $excerpt = "We are preparing a live session to walk through higher-fidelity mesh strategies, turbulence model comparisons and validation paths for late-phase compressor design." }}
-            {{ else if eq $idx 3 }}
-            {{ $title = "Release Plan Preview 2026" }}
-            {{ $excerpt = "Long-range roadmap focusing on modular physics plugins, multi-stage optimization acceleration and collaborative design data management." }}
-            {{ end }}
-            <article class="news-item is-placeholder" data-ani="fade-in">
-                <div class="news-icon">
-                    <span class="material-icons">upcoming</span>
-                </div>
-                <div class="news-item-content">
-                    <h2 class="news-item-title">{{ $title }}</h2>
-                    <div class="news-item-meta">
-                        <span class="news-date">Coming Soon</span>
-                    </div>
-                    <p class="news-item-excerpt">{{ $excerpt }}</p>
-                    <span class="news-readmore-link disabled">Pending</span>
-                </div>
-            </article>
-            {{ end }}
             {{ end }}
         </div>
     </div>

@@ -7,10 +7,12 @@
   "author": "wamo <ainznino@pm.me>",
   "license": "MIT",
   "scripts": {
-    "start": "concurrently npm:watch:*",
-    "watch:tw": "npx tailwindcss -i ./themes/tella/assets/css/main.css -o ./themes/tella/assets/css/style.css --watch",
-    "watch:hugo": "hugo server",
-    "build": "npx tailwindcss -i ./themes/tella/assets/css/main.css -o ./themes/tella/assets/css/style.css && hugo --minify"
+    "start": "hugo server",
+    "build": "hugo --minify",
+    "legacy:start": "concurrently npm:legacy:watch:*",
+    "legacy:watch:tw": "npx tailwindcss -i ./themes/tella/assets/css/main.css -o ./themes/tella/assets/css/style.css --watch",
+    "legacy:watch:hugo": "hugo server",
+    "legacy:build": "npx tailwindcss -i ./themes/tella/assets/css/main.css -o ./themes/tella/assets/css/style.css && hugo --minify"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.9",

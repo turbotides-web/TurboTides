@@ -63,7 +63,7 @@ enableRobotsTXT = true
   [[menu.main]]
     identifier = "news"
     name = "BLOGS"
-    url = "/news/"
+    url = "/blog/"
     weight = 4
 
   [[menu.main]]

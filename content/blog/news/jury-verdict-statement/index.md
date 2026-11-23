@@ -4,7 +4,8 @@ type = "blog"
 layout = "single-news"
 is_news_page = true
 date = 2026-11-20
-url = "/news/jury-verdict-statement/"
+url = "/blog/jury-verdict-statement/"
+aliases = ["/news/jury-verdict-statement/"]
 hide_news_date = true
 +++
 

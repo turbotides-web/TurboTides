@@ -6,7 +6,7 @@
     position: relative;
 }
 
-/* 移除顶部蓝色边框
+/* Decorative top border intentionally disabled.
     .common-page::before {
         content: '';
         position: absolute;
@@ -38,10 +38,10 @@
     position: relative;
 }
 
-    /* 移除标题下划线装饰 */
-    .common-page-title::after {
-        display: none;
-    }
+/* Decorative underline intentionally disabled. */
+.common-page-title::after {
+    display: none;
+}
 
 .common-page-description {
     font-size: 1.2rem;
@@ -55,29 +55,29 @@
     font-weight: 400;
 }
 
-/* 优化内容区域 - 移除白色背景，使用卡片网格布局 */
+/* Content area animation container. */
 .common-page-content {
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-    .common-page-content .content {
-        margin-bottom: 2rem;
-    }
+.common-page-content .content {
+    margin-bottom: 2rem;
+}
 
-    /* 优化列表项布局 - 创建卡片网格 */
-    .common-page-content > a {
-        text-decoration: none;
-        display: block;
-        margin-bottom: 0; /* 移除默认间距，由grid控制 */
-    }
+/* Link-wrapped cards should not introduce extra spacing. */
+.common-page-content > a {
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0;
+}
 
-        .common-page-content > a:hover {
-            text-decoration: none;
-        }
+.common-page-content > a:hover {
+    text-decoration: none;
+}
 
-/* 网格容器 */
+/* Responsive card grid. */
 .items-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -85,7 +85,7 @@
     margin-top: 2rem;
 }
 
-/* 重新设计的卡片样式 */
+/* Shared card styling for internal listing pages. */
 .common-page-content .sans {
     background: white;
     border-radius: 16px;
@@ -98,34 +98,34 @@
     flex-direction: column;
 }
 
-    .common-page-content .sans:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-        border-color: rgba(68, 114, 196, 0.2);
-    }
+.common-page-content .sans:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    border-color: rgba(68, 114, 196, 0.2);
+}
 
-    /* 图片优化 */
-    .common-page-content .sans img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        transition: transform 0.3s ease;
-    }
+/* Card image treatment. */
+.common-page-content .sans img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
 
-    .common-page-content .sans:hover img {
-        transform: scale(1.05);
-    }
+.common-page-content .sans:hover img {
+    transform: scale(1.05);
+}
 
-    /* 内容区域优化 */
-    .common-page-content .sans > div:last-child {
-        padding: 1.8rem;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
+/* Card body layout. */
+.common-page-content .sans > div:last-child {
+    padding: 1.8rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
-/* 标题优化 */
+/* Card title styling. */
 .common-page-content .text-gray-900 {
     color: #1f262b !important;
     font-size: 1.25rem !important;
@@ -139,7 +139,7 @@
     color: #4472c4 !important;
 }
 
-/* 描述文本优化 */
+/* Card description styling. */
 .common-page-content .text-gray-700 {
     color: #666666 !important;
     font-size: 0.95rem !important;
@@ -148,7 +148,7 @@
     flex-grow: 1;
 }
 
-/* 日期样式优化 */
+/* Card date/meta styling. */
 .common-page-content .text-gray-600 {
     color: #4472c4 !important;
     font-size: 0.85rem !important;
@@ -160,19 +160,19 @@
     margin-top: auto;
 }
 
-/* 分页器优化 */
+/* Pagination spacing. */
 .common-page-content nav {
     margin-top: 3rem;
     text-align: center;
 }
 
-/* Animation classes */
+/* Animation classes. */
 .animate-in {
     opacity: 1 !important;
     transform: translateY(0) !important;
 }
 
-/* 添加进入动画的延迟效果 */
+/* Staggered reveal effect for cards. */
 .common-page-content .sans {
     opacity: 0;
     transform: translateY(30px);
@@ -184,31 +184,31 @@
     transform: translateY(0);
 }
 
-    .common-page-content.animate-in .sans:nth-child(1) {
-        transition-delay: 0.1s;
-    }
+.common-page-content.animate-in .sans:nth-child(1) {
+    transition-delay: 0.1s;
+}
 
-    .common-page-content.animate-in .sans:nth-child(2) {
-        transition-delay: 0.2s;
-    }
+.common-page-content.animate-in .sans:nth-child(2) {
+    transition-delay: 0.2s;
+}
 
-    .common-page-content.animate-in .sans:nth-child(3) {
-        transition-delay: 0.3s;
-    }
+.common-page-content.animate-in .sans:nth-child(3) {
+    transition-delay: 0.3s;
+}
 
-    .common-page-content.animate-in .sans:nth-child(4) {
-        transition-delay: 0.4s;
-    }
+.common-page-content.animate-in .sans:nth-child(4) {
+    transition-delay: 0.4s;
+}
 
-    .common-page-content.animate-in .sans:nth-child(5) {
-        transition-delay: 0.5s;
-    }
+.common-page-content.animate-in .sans:nth-child(5) {
+    transition-delay: 0.5s;
+}
 
-    .common-page-content.animate-in .sans:nth-child(6) {
-        transition-delay: 0.6s;
-    }
+.common-page-content.animate-in .sans:nth-child(6) {
+    transition-delay: 0.6s;
+}
 
-/* 响应式设计 */
+/* Responsive adjustments. */
 @media (max-width: 768px) {
     .items-grid {
         grid-template-columns: 1fr;
@@ -262,7 +262,7 @@
     }
 }
 
-/* 减少动画偏好的支持 */
+/* Respect reduced-motion user preference. */
 @media (prefers-reduced-motion: reduce) {
     .common-page-title,
     .common-page-description,
@@ -274,31 +274,31 @@
     }
 }
 
-/* 优化空状态样式 */
+/* Empty-state styling. */
 .empty-state {
     text-align: center;
     padding: 0rem 2rem;
     margin-top: 2rem;
 }
 
-    .empty-state h3 {
-        font-size: 1.8rem;
-        margin-bottom: 1rem;
-        color: #1f262b;
-        font-weight: 600;
-    }
+.empty-state h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #1f262b;
+    font-weight: 600;
+}
 
-    .empty-state p {
-        font-size: 1.1rem;
-        line-height: 1.6;
-        color: #666666;
-        max-width: 500px;
-        margin: 0 auto;
-    }
+.empty-state p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #666666;
+    max-width: 500px;
+    margin: 0 auto;
+}
 
-    .empty-state .icon {
-        font-size: 4rem;
-        color: #4472c4;
-        margin-bottom: 1.5rem;
-        opacity: 0.7;
-    }
+.empty-state .icon {
+    font-size: 4rem;
+    color: #4472c4;
+    margin-bottom: 1.5rem;
+    opacity: 0.7;
+}
