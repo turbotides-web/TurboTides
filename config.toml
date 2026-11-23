@@ -1,6 +1,6 @@
 baseURL = "https://www.turbotides.com"
 canonifyURLs = false
-title = "TURBOTIDES"
+title = "TurboTides"
 author = "Taize Technology"
 languageCode = "en"
 DefaultContentLanguage = "en"

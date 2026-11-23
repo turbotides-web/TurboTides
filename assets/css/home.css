@@ -38,8 +38,15 @@
 .hero-overlay {
     position: absolute;
     inset: 0;
-        /* background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.55)); */
-    background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,0));
+    /* Dark at the top for menu, transparent in the middle, slightly dark at bottom */
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.4) 0%,   /* Darker top ensures menu readability */
+        rgba(0, 0, 0, 0) 20%,    /* Quickly fades to clear */
+        rgba(0, 0, 0, 0) 80%, 
+        rgba(0, 0, 0, 0.2) 100%
+    );
+    pointer-events: none; /* Let clicks pass through */
 }
 
 /* === 3. Hero 内容区域 === */
@@ -94,6 +101,13 @@
     font-size: 1.2rem;
     font-weight: 400;
     margin-top: .7rem;
+}
+
+.hero-line-1, 
+.hero-line-2, 
+.hero-line-3 {
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5), 
+                 0 0 2px rgba(0, 0, 0, 0.2);
 }
 
 .hero-scroll-indicator {

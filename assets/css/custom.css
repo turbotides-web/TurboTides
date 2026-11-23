@@ -32,11 +32,33 @@
     box-shadow: none !important;
 }
 
+/* Legibility shadow only over the home video, never on white headers */
+body.home-transparent:not(.scrolled) .home-header .main-nav .nav-link {
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+.brand-block img {
+    filter: none;
+    transition: filter 0.4s ease; /* Smooth morphing effect */
+}
+
+/* Home Top (Video): Force White */
+body.home-transparent:not(.scrolled) .brand-block img {
+    filter: brightness(0) invert(1) drop-shadow(0 1px 3px rgba(0,0,0,0.6));
+}
+
+/* Home Scrolled: Remove Filter (Shows Original Blue Logo) */
+body.home-transparent.scrolled .brand-block img {
+    filter: none; 
+}
+
 /* 首页滚动后半透明出现（配合 body.home-transparent.scrolled 逻辑） */
 body.home-transparent.scrolled .home-header .main-nav {
-    background: rgba(10,20,30,0.72) !important;
-    backdrop-filter: blur(6px);
-    box-shadow: 0 4px 14px -4px rgba(0,0,0,0.35);
+    /* High opacity white (95%) for clean look */
+    background: rgba(255, 255, 255, 0.95) !important; 
+    backdrop-filter: blur(10px); 
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
 /* 桌面导航链接颜色控制 */
@@ -46,6 +68,16 @@ body.home-transparent.scrolled .home-header .main-nav {
 
 .site-header:not(.home-header) .main-nav .nav-link {
     color: #111 !important;
+}
+
+body.home-transparent.scrolled .home-header .hamburger-btn .hb-bar {
+    background: #0a577a;
+}
+
+body.home-transparent.scrolled .home-header .main-nav .nav-link {
+    color: #0a577a !important; /* Using your brand blue from home.css */
+    text-shadow: none;         /* Remove the shadow so it looks clean */
+    font-weight: 600;          /* Slight bold makes it pop on white */
 }
 
 /* 使内容不被固定头部遮挡：非首页加顶部补偿 */
@@ -80,7 +112,7 @@ body.home-transparent main {
 }
 
 body.home-transparent.scrolled .home-header .hamburger-btn .hb-bar {
-    background: #fff;
+    background: #0a577a;
 }
 
 /* 桌面链接组靠右 */
@@ -103,6 +135,7 @@ body.home-transparent.scrolled .home-header .hamburger-btn .hb-bar {
     font-weight: 500;
     text-decoration: none;
     padding: .2rem 0;
+    transition: color 0.3s ease, opacity 0.3s ease;
 }
 
     .nav-link::after {
