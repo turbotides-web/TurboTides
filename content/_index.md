@@ -2,6 +2,9 @@
 title: "Home"
 # 可选：首页配置，例如新闻、轮播图片、Testimonials 的引用方式
 news:
+  - title: "Federal Jury Finds No Copyright Infringement by TurboTides"
+    link: "/news/jury-verdict-statement/"
+    label: "Official Statement · November 20, 2026"
 
 carousel:
 
@@ -13,9 +16,6 @@ carousel:
     sub1="TURBOTIDES"
     sub2="The Turbomachinery Integrated Design System"
 >}}
-
-
-{{< home-news >}}
 
 
 {{< core-intro

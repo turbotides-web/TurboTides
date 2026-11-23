@@ -4,16 +4,13 @@
     </video>
     <div class="hero-overlay"></div>
 
-    <div class="hero-center-news">
-        {{ $page := .Page }}
-        {{ with $page.Params.news }}
-        {{ range . }}
-        <a class="hero-news-item" href="{{ .link }}">{{ .title }}</a>
-        {{ end }}
-        {{ else }}
-        <a class="hero-news-item" href="/news/news1/">TurboTides CFD Meets NASA High Efficiency Centrifugal Compressor</a>
-        {{ end }}
-    </div>
+    {{ $page := .Page }}
+    {{ $item := dict "title" "TurboTides CFD Meets NASA High Efficiency Centrifugal Compressor" "link" "/news/news1/" }}
+    {{ with $page.Params.news }}{{ $item = index . 0 }}{{ end }}
+    <a class="hero-news-card" href="{{ $item.link }}">
+        {{ with $item.label }}<span class="hero-news-label">{{ . }}</span>{{ end }}
+        <span class="hero-news-title">{{ $item.title }}</span>
+    </a>
 
     <div class="hero-headlines">
         <h4 class="hero-line-1 hero-text-animate" data-delay="0.3">{{ .Get "headline" }}</h4>
@@ -33,6 +30,55 @@
 </div>
 
 <style>
+    /* Centered translucent announcement card below the product headline */
+    .hero-news-card {
+        position: absolute;
+        left: 50%;
+        bottom: 18%;
+        transform: translateX(-50%);
+        z-index: 3;
+        box-sizing: border-box;
+        width: min(580px, calc(100% - 2rem));
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: .5rem;
+        padding: .95rem 1.5rem 1.05rem;
+        text-align: center;
+        text-decoration: none;
+        color: #fff;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+        background: rgba(40, 52, 58, 0.6);
+        -webkit-backdrop-filter: blur(6px);
+        backdrop-filter: blur(6px);
+        border-radius: 0;
+        transition: background-color .2s ease;
+    }
+
+    .hero-news-card:hover { background: rgba(40, 52, 58, 0.75); }
+    .hero-news-card:focus-visible { outline: 2px solid #fff; outline-offset: 3px; background: rgba(40, 52, 58, 0.75); }
+
+    .hero-news-label {
+        font-size: .75rem;
+        font-weight: 600;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.85);
+    }
+
+    .hero-news-title {
+        font-size: 1.12rem;
+        font-weight: 600;
+        line-height: 1.35;
+    }
+
+    .hero-news-card:hover .hero-news-title { text-decoration: underline; text-underline-offset: 4px; }
+
+    @media (max-width: 768px) {
+        .hero-news-card { bottom: 18%; padding: .8rem 1rem .9rem; gap: .3rem; }
+        .hero-news-title { font-size: 1rem; }
+    }
+
     .hero-text-animate {
         opacity: 0;
         transform: translateY(30px);
