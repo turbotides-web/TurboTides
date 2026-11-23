@@ -278,11 +278,7 @@
     /* 段落样式 */
     .news-content p {
         margin: 0 0 1.5rem 0;
-        text-align: justify;
-        background: rgba(248, 250, 252, 0.6);
-        padding: 1rem 1.2rem;
-        border-left: 2px solid rgba(68, 114, 196, 0.15);
-        border-radius: 3px;
+        text-align: left;
     }
 
     /* 标题层级优化 */
@@ -491,6 +487,26 @@
             border-bottom-color: #4472c4;
         }
 
+    /* Reading column: prose only (images/tables/code stay full width) */
+    .news-content > p,
+    .news-content > h1,
+    .news-content > h2,
+    .news-content > h3,
+    .news-content > h4,
+    .news-content > ul,
+    .news-content > ol,
+    .news-content > blockquote,
+    .news-content > hr {
+        max-width: 860px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Paragraphs holding an image + caption keep the full card width */
+    .news-content > p:has(img) {
+        max-width: none;
+    }
+
 /* 参考文献区域 */
 .references {
     margin-top: 3rem;
@@ -585,10 +601,6 @@
             font-size: 1.5rem;
         }
 
-        .news-content p {
-            padding: .8rem 1rem;
-        }
-
     .news-meta-container {
         flex-direction: column;
         align-items: flex-start;
@@ -641,10 +653,6 @@
 
         .news-content h3 {
             font-size: 1.1rem;
-        }
-
-        .news-content p {
-            padding: .6rem .8rem;
         }
 
     .news-readmore-link {

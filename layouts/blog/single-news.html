@@ -6,9 +6,11 @@
         <p class="s-page-description" data-ani="fade-up">{{ . }}</p>
         {{ end }}
         <div class="news-meta-container">
+            {{ if not .Params.hide_news_date }}
             <div class="news-article-meta">
                 <span class="news-date">{{ .Date.Format "2006-01-02" }}</span>
             </div>
+            {{ end }}
             <a href="/news/" class="news-return-button">
                 &lt; Return
             </a>
