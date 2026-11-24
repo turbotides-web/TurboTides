@@ -87,9 +87,24 @@
     color: #fff;
 }
 
+/* Soft local scrim so white hero text stays legible over bright foam/sand
+   without darkening the whole video. */
+.hero-headlines::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(900px, 140vw);
+    height: 420px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(ellipse at center, rgba(8, 20, 30, 0.6) 0%, rgba(8, 20, 30, 0.36) 40%, rgba(8, 20, 30, 0) 70%);
+    pointer-events: none;
+    z-index: -1;
+}
+
 .hero-line-1 {
     letter-spacing: .15em;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 1rem;
     margin: 0 0 .5rem;
 }
@@ -102,15 +117,15 @@
 
 .hero-line-3 {
     font-size: 1.2rem;
-    font-weight: 400;
+    font-weight: 500;
     margin-top: .7rem;
 }
 
 .hero-line-1, 
 .hero-line-2, 
 .hero-line-3 {
-    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5), 
-                 0 0 2px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6),
+                 0 2px 18px rgba(0, 0, 0, 0.55);
 }
 
 .hero-scroll-indicator {

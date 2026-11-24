@@ -430,3 +430,14 @@ These are good candidates if the repo is being stabilized:
 ## Verification Notes
 
 This repo was inspected locally, but `hugo` is not installed in the current environment, so a live site build was not executed during creation of this file. Any future agent changing build/deploy behavior should validate with an actual Hugo build before concluding the pipeline is fixed.
+
+## Release and Build Notes (added Nov 2026)
+
+- **Local Hugo is too old for this repo.** Shortcodes (`feature-grid1`, `testimonials`) use `hugo.Data`; local Hugo 0.152.2 can't evaluate it, while CI pins Hugo Extended 0.160.1 (`.github/workflows/hugo.yml`). To verify locally, copy tracked files to a temp dir, run `sed -i 's/hugo\.Data/site.Data/g' layouts/shortcodes/*.html` there, and build with `hugo --minify`. Never commit that swap. Or install Hugo 0.160.1 locally.
+- **Pushing to `main` auto-deploys** to GitHub Pages (www.turbotides.com). Get explicit approval for each push, separate from approval to commit or merge.
+- **Encoding:** `assets/css/news.css` is GBK with CRLF endings; edit it byte-safely (e.g. Python reading/writing bytes), never with tools that re-encode. `assets/css/custom.css` is now ASCII/LF. `layouts/shortcodes/video-hero.html` and `content/_index.md` contain legacy GBK/Chinese comments (the latter has a BOM); preserve bytes when editing.
+- **News URLs:** news articles live under `/blog/...` with `/news/...` kept as `aliases`. New articles should follow that (see `content/blog/news/jury-verdict-statement/index.md`).
+- **Approved statements** (e.g. the Nov 20, 2026 jury verdict article) must not have their wording or HTML changed when restyling; style via `assets/css/news.css` only. `hide_news_date = true` suppresses the date pill.
+- **Homepage hero** (`video-hero.html`) shows `news[0]` from `content/_index.md` as the announcement card. `home-news` (the pill strip) is not currently on the homepage, so other `news:` entries are not displayed there.
+
+- **Homepage announcement panel** (high-prominence jury verdict card in `video-hero.html`): design spec, measurements, rollback commit and retirement steps are in `docs/homepage-announcement.md`. Read it before touching `.hero-news-card`, hero spacing, or `news[0]` in `content/_index.md`; do not shrink or restyle it without owner approval.
