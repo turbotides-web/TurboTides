@@ -22,6 +22,9 @@
     position: relative;
     height: 102vh;
     overflow: hidden;
+    /* Fallback shown while the video downloads, so the white header/hero text
+       stays readable instead of sitting on a blank white page. */
+    background: linear-gradient(160deg, #0b2536 0%, #123a52 55%, #1b5a73 100%);
 }
 
 .hero-bg-video {
