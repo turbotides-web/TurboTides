@@ -1,4 +1,4 @@
-﻿---
+---
 title: 'Contact Us'
 description: 'Get in touch with our team for support, sales, and partnerships.'
 type: 'contact'

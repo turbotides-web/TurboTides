@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Home"
 # 可选：首页配置，例如新闻、轮播图片、Testimonials 的引用方式
 news:

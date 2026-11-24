@@ -38,7 +38,7 @@
     </div>
 </section>
 
-<script>// ServicesÒ³Ãæ¶¯»­Ğ§¹û
+<script>// Servicesé¡µé¢åŠ¨ç”»æ•ˆæœ
 document.addEventListener('DOMContentLoaded', function() {
     const observerOptions = {
         root: null,
@@ -52,18 +52,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 const item = entry.target;
                 const index = parseInt(item.dataset.serviceIndex);
 
-                // ÎªÃ¿¸ö·şÎñÏîÌí¼Ó¶¯»­
+                // ä¸ºæ¯ä¸ªæœåŠ¡é¡¹æ·»åŠ åŠ¨ç”»
                 setTimeout(() => {
                     item.classList.add('animate-in');
                 }, index * 150);
 
-                // Í¼±ê¶¯»­£¨´Ó×ó²à»¬Èë£©
+                // å›¾æ ‡åŠ¨ç”»ï¼ˆä»å·¦ä¾§æ»‘å…¥ï¼‰
                 const icon = item.querySelector('.service-icon');
                 setTimeout(() => {
                     icon.classList.add('animate-in');
                 }, index * 150 + 100);
 
-                // ÄÚÈİ¶¯»­£¨´ÓÓÒ²à»¬Èë£©
+                // å†…å®¹åŠ¨ç”»ï¼ˆä»å³ä¾§æ»‘å…¥ï¼‰
                 const content = item.querySelector('.service-content');
                 setTimeout(() => {
                     content.classList.add('animate-in');
@@ -74,13 +74,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    // ¹Û²ìËùÓĞ service ÏîÄ¿
+    // è§‚å¯Ÿæ‰€æœ‰ service é¡¹ç›®
     const serviceItems = document.querySelectorAll('.service-item');
     serviceItems.forEach(item => {
         observer.observe(item);
     });
 
-    // Ò³Ãæ±êÌâ¶¯»­
+    // é¡µé¢æ ‡é¢˜åŠ¨ç”»
     const title = document.querySelector('.s-page-title');
     const description = document.querySelector('.s-page-description');
 

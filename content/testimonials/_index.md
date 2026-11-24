@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Testimonials"
 description: "What our users and partners are saying."
 testimonials:

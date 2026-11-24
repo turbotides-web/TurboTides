@@ -22,7 +22,7 @@
                         {{ $quote := $t.quote }}
                         {{ $paragraphs := split $quote "\n\n" }}
                         {{ if eq (len $paragraphs) 1 }}
-                        <!-- Èç¹ûÃ»ÓÐÃ÷È·µÄ¶ÎÂä·Ö¸ô£¬³¢ÊÔ°´¾äºÅ+¿Õ¸ñ·Ö¶Î -->
+                        <!-- å¦‚æžœæ²¡æœ‰æ˜Žç¡®çš„æ®µè½åˆ†éš”ï¼Œå°è¯•æŒ‰å¥å·+ç©ºæ ¼åˆ†æ®µ -->
                         {{ $sentences := split $quote ". " }}
                         {{ if gt (len $sentences) 3 }}
                         {{ $midPoint := div (len $sentences) 2 }}
@@ -57,7 +57,7 @@
     </div>
 </section>
 
-<script>// Testimonials Ò³Ãæ¶¯»­¿ØÖÆ
+<script>// Testimonials é¡µé¢åŠ¨ç”»æŽ§åˆ¶
 document.addEventListener('DOMContentLoaded', function() {
     const observerOptions = {
         root: null,
@@ -71,18 +71,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 const item = entry.target;
                 const index = parseInt(item.dataset.testimonialIndex);
 
-                // ÎªÕû¸öÏîÄ¿Ìí¼Ó¶¯»­Àà
+                // ä¸ºæ•´ä¸ªé¡¹ç›®æ·»åŠ åŠ¨ç”»ç±»
                 setTimeout(() => {
                     item.classList.add('animate-in');
                 }, index * 200);
 
-                // Logo ¶¯»­£¨´ÓÓÒ²à»¬Èë£©
+                // Logo åŠ¨ç”»ï¼ˆä»Žå³ä¾§æ»‘å…¥ï¼‰
                 const logo = item.querySelector('.tb-logo');
                 setTimeout(() => {
                     logo.classList.add('animate-in');
                 }, index * 200 + 100);
 
-                // ÎÄ±¾¶¯»­£¨´Óµ×²¿»¬Èë£©
+                // æ–‡æœ¬åŠ¨ç”»ï¼ˆä»Žåº•éƒ¨æ»‘å…¥ï¼‰
                 const text = item.querySelector('.tb-text');
                 setTimeout(() => {
                     text.classList.add('animate-in');
@@ -93,13 +93,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    // ¹Û²ìËùÓÐ testimonial ÏîÄ¿
+    // è§‚å¯Ÿæ‰€æœ‰ testimonial é¡¹ç›®
     const testimonialItems = document.querySelectorAll('.tb-item');
     testimonialItems.forEach(item => {
         observer.observe(item);
     });
 
-    // Ò³Ãæ±êÌâ¶¯»­
+    // é¡µé¢æ ‡é¢˜åŠ¨ç”»
     const title = document.querySelector('.t-page-title');
     if (title) {
         setTimeout(() => {

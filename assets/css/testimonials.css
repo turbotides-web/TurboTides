@@ -2,7 +2,7 @@
 .testimonials-page {
     background: #f5f7f9;
     padding: 3.2rem 0 3.6rem;
-    overflow: hidden; /* Îª¶¯»­×¼±¸ */
+    overflow: hidden; /* ä¸ºåŠ¨ç”»å‡†å¤‡ */
 }
 
 .testim-wrap {
@@ -175,7 +175,7 @@
     order: 1;
 }
 
-/* ÏìÓ¦Ê½Éè¼Æ */
+/* å“åº”å¼è®¾è®¡ */
 @media (max-width: 840px) {
     .tb-item {
         flex-direction: column;
@@ -265,7 +265,7 @@
     }
 }
 
-/* ¼õÉÙ¶¯»­Æ«ºÃµÄÖ§³Ö */
+/* å‡å°‘åŠ¨ç”»åå¥½çš„æ”¯æŒ */
 @media (prefers-reduced-motion: reduce) {
     .t-page-title,
     .tb-item,

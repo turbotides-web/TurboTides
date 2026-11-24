@@ -16,7 +16,7 @@
     <div class="hero-headlines">
         <h4 class="hero-line-1 hero-text-animate" data-delay="0.3">{{ .Get "headline" }}</h4>
 
-        <!-- ��ɫ����ͼƬ������TURBOTIDES�Ϸ� -->
+        <!-- Blue line image above TURBOTIDES -->
         <div class="hero-blue-line hero-text-animate" data-delay="0.5">
             <img src="/img/home/slide-blue-line.png" alt="">
         </div>
@@ -115,7 +115,7 @@
             animation-delay: 0.9s;
         }
 
-    /* ��ɫ������ʽ - �����ƶ� */
+    /* Blue line styles - mobile adaptation */
     .hero-blue-line {
         display: flex;
         justify-content: center;
@@ -132,7 +132,7 @@
             object-fit: contain;
         }
 
-    /* TURBOTIDES �����Ŷ���Ч�� - ֻ���ɴ�С���Ӿ���� */
+    /* TURBOTIDES text scale-in effect - scales from large to small only */
     .hero-text-scale-in {
         opacity: 0;
         transform: scale(2.5);
@@ -151,7 +151,7 @@
         }
     }
 
-    /* TURBOTIDES ���Ŷ��� - �Ӵ�С���Ӿ���� */
+    /* TURBOTIDES text scale-in animation - scales from large to small */
     @keyframes heroTextScaleIn {
         0% {
             opacity: 0;
@@ -169,12 +169,12 @@
         }
     }
 
-    /* ȷ��������ҳ����غ����� */
+    /* Make sure the animation starts after the page has finished loading */
     .hero-text-animate.animate-start {
         animation-play-state: running;
     }
 
-    /* �����ƶ��˵Ķ���Ч�� */
+    /* Mobile animation adjustments */
     @media (max-width: 480px) {
         .hero-text-animate:not(.hero-text-scale-in) {
             transform: translateY(20px);
@@ -183,7 +183,7 @@
         .hero-blue-line {
             height: 8px;
             margin: 0.2rem 0 -0.2rem 0;
-            transform: translateX(25px) !important; /* �ƶ��������ƶ�30px */
+            transform: translateX(25px) !important; /* shift right */
         }
 
             .hero-blue-line img {
@@ -244,7 +244,7 @@
 </style>
 
 <script>document.addEventListener('DOMContentLoaded', function() {
-    // �ȴ�ҳ����ȫ���غ���������
+    // Wait for the page to finish loading, then start the animation
     setTimeout(function() {
         const heroTexts = document.querySelectorAll('.hero-text-animate');
         heroTexts.forEach(text => {
