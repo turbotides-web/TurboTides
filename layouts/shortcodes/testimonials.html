@@ -1,5 +1,5 @@
 <section class="testimonials testimonials-single" id="testimonials">
-    {{/* ±êÌâ */}}
+    {{/* æ ‡é¢˜ */}}
     {{ $raw := .Get "title" | default "What Others Are Saying" }}
     {{ $title := (replaceRE `\b(Others)\b` "<span class='w-first'>$1</span>" $raw) | safeHTML }}
 
@@ -7,7 +7,7 @@
         <h2 class="ts-heading"><a href="/testimonials/" class="ts-heading-link">{{ $title }}</a></h2>
         <div class="ts-line" aria-hidden="true"></div>
 
-        {{/* ÊÕ¼¯ÄÚÁªĞĞ */}}
+        {{/* æ”¶é›†å†…è”è¡Œ */}}
         {{ $lines := slice }}
         {{ with .Inner }}
         {{ range (split (. | chomp) "\n") }}
@@ -16,7 +16,7 @@
         {{ end }}
         {{ end }}
 
-        {{/* ¹¹Ôì items£ºÓÅÏÈÄÚÁª£¬Æä´Î data£¬×îºóÄ¬ÈÏ */}}
+        {{/* æ„é€  itemsï¼šä¼˜å…ˆå†…è”ï¼Œå…¶æ¬¡ dataï¼Œæœ€åé»˜è®¤ */}}
         {{ $items := slice }}
         {{ if gt (len $lines) 0 }}
         {{ range $lines }}
@@ -35,11 +35,11 @@
  $items = slice
         (dict "quote" "TurboTides dramatically shortened our design iteration time." "author" "Senior Engineer, Aerospace")
         (dict "quote" "Integrated workflow reduced cross-discipline friction." "author" "R&D Manager, Energy")
-        (dict "quote" "Optimization module revealed a configuration we hadn¡¯t considered." "author" "Lead Designer, Machinery")
+        (dict "quote" "Optimization module revealed a configuration we hadnâ€™t considered." "author" "Lead Designer, Machinery")
         }}
         {{ end }}
 
-        {{/* logos ²ÎÊı */}}
+        {{/* logos å‚æ•° */}}
         {{ $logos := slice }}
         {{ with .Get "logos" }}
         {{ range (split . ",") }}
@@ -47,7 +47,7 @@
         {{ end }}
         {{ end }}
 
-        {{/* ¿ÉÁÙÊ±´ò¿ªµ÷ÊÔ£¨µ÷ÊÔÍêÉ¾³ı£©£º */}}
+        {{/* å¯ä¸´æ—¶æ‰“å¼€è°ƒè¯•ï¼ˆè°ƒè¯•å®Œåˆ é™¤ï¼‰ï¼š */}}
         <!-- DEBUG testimonials: items={{ len $items }} first={{ with index $items 0 }}{{ htmlEscape (index . "quote") }}{{ end }} pageIsHome={{ .Page.IsHome }} -->
 
         <div class="ts-carousel" data-interval="{{ .Get "interval" | default "5500" }}" data-autoplay="true">
