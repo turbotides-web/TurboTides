@@ -16,7 +16,13 @@
 {{- /* Description */ -}}
 {{- $desc := "" -}}
 {{- with .Params.seo_description -}}{{- $desc = . -}}{{- end -}}
-{{- if not $desc -}}{{- with .Description -}}{{- $desc = . -}}{{- end -}}{{- end -}}
+{{- /* A front matter description shorter than 40 characters is usually just the title; prefer body copy */ -}}
+{{- $short := "" -}}
+{{- if not $desc -}}
+  {{- with .Description -}}
+    {{- if ge (strings.RuneCount .) 40 -}}{{- $desc = . -}}{{- else -}}{{- $short = . -}}{{- end -}}
+  {{- end -}}
+{{- end -}}
 {{- if and (not $desc) $isArticle -}}
   {{- range findRE `(?s)<p[^>]*>.*?</p>` .Content -}}
     {{- if not $desc -}}
@@ -25,6 +31,7 @@
     {{- end -}}
   {{- end -}}
 {{- end -}}
+{{- if not $desc -}}{{- $desc = $short -}}{{- end -}}
 {{- if not $desc -}}{{- $desc = $defaults.meta_description -}}{{- end -}}
 {{- $desc = $desc | plainify | htmlUnescape | truncate 220 -}}
 
