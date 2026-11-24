@@ -1,0 +1,109 @@
+{{- /*
+  Shared SEO / social metadata. Call from a `meta_tags` block: {{ partial "seo.html" . }}
+
+  Per-page front matter overrides (all optional):
+    seo_description  meta/OG description (otherwise .Description, otherwise the first
+                     substantial body paragraph, quoted verbatim and truncated)
+    image            social share image (otherwise first <img> in the body, otherwise site default)
+    author           person credited in structured data (otherwise the TurboTides organization)
+
+  Body text is never rewritten: derived descriptions are verbatim excerpts of the page copy.
+*/ -}}
+{{- $site := .Site -}}
+{{- $defaults := $site.Params.homepage_meta_tags -}}
+{{- $isArticle := .IsPage -}}
+
+{{- /* Description */ -}}
+{{- $desc := "" -}}
+{{- with .Params.seo_description -}}{{- $desc = . -}}{{- end -}}
+{{- if not $desc -}}{{- with .Description -}}{{- $desc = . -}}{{- end -}}{{- end -}}
+{{- if and (not $desc) $isArticle -}}
+  {{- range findRE `(?s)<p[^>]*>.*?</p>` .Content -}}
+    {{- if not $desc -}}
+      {{- $t := . | plainify | htmlUnescape | replaceRE `\s+` " " | strings.TrimSpace -}}
+      {{- if ge (strings.RuneCount $t) 80 -}}{{- $desc = $t -}}{{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if not $desc -}}{{- $desc = $defaults.meta_description -}}{{- end -}}
+{{- $desc = $desc | plainify | htmlUnescape | truncate 220 -}}
+
+{{- /* Share image */ -}}
+{{- $img := "" -}}
+{{- with .Params.image -}}
+  {{- $img = . -}}
+{{- else -}}
+  {{- if $isArticle -}}
+    {{- with findRESubmatch `<img[^>]+src="([^"]+)"` .Content 1 -}}
+      {{- $img = index (index . 0) 1 -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if not $img -}}{{- $img = $defaults.meta_og_image -}}{{- end -}}
+{{- $img = $img | absURL -}}
+
+{{- $logo := "img/logo/tt_logo.png" | absURL -}}
+{{- $title := .Title | default $site.Title -}}
+{{- $fullTitle := $title -}}
+{{- if not .IsHome -}}{{- $fullTitle = printf "%s | %s" $title $site.Title -}}{{- end -}}
+{{- $published := "" -}}
+{{- if not .Date.IsZero -}}{{- $published = .Date.Format "2006-01-02T15:04:05-07:00" -}}{{- end -}}
+{{- $modified := $published -}}
+{{- if not .Lastmod.IsZero -}}{{- $modified = .Lastmod.Format "2006-01-02T15:04:05-07:00" -}}{{- end -}}
+
+<link rel="canonical" href="{{ .Permalink }}">
+<meta name="description" content="{{ $desc }}">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+
+<meta property="og:site_name" content="{{ $site.Title }}">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="{{ if $isArticle }}article{{ else }}website{{ end }}">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:image" content="{{ $img }}">
+{{- if and $isArticle $published }}
+<meta property="article:published_time" content="{{ $published }}">
+<meta property="article:modified_time" content="{{ $modified }}">
+{{- end }}
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $desc }}">
+<meta name="twitter:image" content="{{ $img }}">
+
+{{- with .OutputFormats.Get "RSS" }}
+<link rel="alternate" type="application/rss+xml" title="{{ $site.Title }}" href="{{ .Permalink }}">
+{{- end }}
+
+{{- /* Structured data */ -}}
+{{- $publisher := dict "@type" "Organization" "name" $site.Title "url" ("/" | absURL) "logo" (dict "@type" "ImageObject" "url" $logo) -}}
+{{- if $isArticle }}
+  {{- $author := $publisher -}}
+  {{- with .Params.author -}}
+    {{- $author = dict "@type" "Person" "name" . -}}
+  {{- end -}}
+  {{- $article := dict
+      "@context" "https://schema.org"
+      "@type" "NewsArticle"
+      "mainEntityOfPage" (dict "@type" "WebPage" "@id" .Permalink)
+      "headline" $title
+      "description" $desc
+      "image" (slice $img)
+      "datePublished" $published
+      "dateModified" $modified
+      "author" $author
+      "publisher" $publisher
+      "inLanguage" "en" -}}
+  {{- $crumbs := dict
+      "@context" "https://schema.org"
+      "@type" "BreadcrumbList"
+      "itemListElement" (slice
+        (dict "@type" "ListItem" "position" 1 "name" "Home" "item" ("/" | absURL))
+        (dict "@type" "ListItem" "position" 2 "name" "Blog" "item" ("blog/" | absURL))
+        (dict "@type" "ListItem" "position" 3 "name" $title "item" .Permalink)) }}
+<script type="application/ld+json">{{ $article | jsonify | safeJS }}</script>
+<script type="application/ld+json">{{ $crumbs | jsonify | safeJS }}</script>
+{{- else }}
+<script type="application/ld+json">{{ dict "@context" "https://schema.org" "@type" "WebPage" "name" $title "url" .Permalink "description" $desc "publisher" $publisher | jsonify | safeJS }}</script>
+{{- end }}

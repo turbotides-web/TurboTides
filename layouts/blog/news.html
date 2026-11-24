@@ -1,4 +1,7 @@
-﻿{{ define "main" }}
+﻿{{ define "meta_tags" }}
+{{ partial "seo.html" . }}
+{{ end }}
+{{ define "main" }}
 <section class="news-page services-page">
     <div class="services-wrap">
         <h1 class="s-page-title" data-ani="fade-up">{{ .Title | default "News" }}</h1>

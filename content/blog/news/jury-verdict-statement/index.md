@@ -7,6 +7,7 @@ date = 2026-11-20
 url = "/blog/jury-verdict-statement/"
 aliases = ["/news/jury-verdict-statement/"]
 hide_news_date = true
+author = "Dr. Xuwen Qiu"
 +++
 
 <p>By Dr. Xuwen Qiu<br>
